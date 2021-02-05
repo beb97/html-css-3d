@@ -1,0 +1,83 @@
+<html>
+<head>
+<link rel="stylesheet" href="cube.css"/>
+<title>Cube 3D</title>
+</head>
+<body>
+<a href="cube.html">cube</a>
+<a href="card-flip.html">card</a>
+<a href="carousel.html">carousel</a>
+<!-- ref:  https://3dtransforms.desandro.com/cube -->
+<div class="scene">
+  <div class="cube">
+    <div class="cube__face cube__face--front">front</div>
+    <div class="cube__face cube__face--back">back</div>
+    <div class="cube__face cube__face--right">right</div>
+    <div class="cube__face cube__face--left">left</div>
+    <div class="cube__face cube__face--top">top</div>
+    <div class="cube__face cube__face--bottom">bottom</div>
+  </div>
+</div>
+<p class="radio-group">
+  <label>
+    <input type="radio" name="rotate-cube-side" value="front" checked /> front
+  </label>
+  <label>
+    <input type="radio" name="rotate-cube-side" value="right" /> right
+  </label>
+  <label>
+    <input type="radio" name="rotate-cube-side" value="back" /> back
+  </label>
+  <label>
+    <input type="radio" name="rotate-cube-side" value="left" /> left
+  </label>
+  <label>
+    <input type="radio" name="rotate-cube-side" value="top" /> top
+  </label>
+  <label>
+    <input type="radio" name="rotate-cube-side" value="bottom" /> bottom
+  </label>
+</p>
+
+
+</body>
+
+<script>
+var cube = document.querySelector('.cube');
+var radioGroup = document.querySelector('.radio-group');
+var currentClass = '';
+
+function changeSide() {
+  var checkedRadio = radioGroup.querySelector(':checked');
+  var showClass = 'show-' + checkedRadio.value;
+  if ( currentClass ) {
+    cube.classList.remove( currentClass );
+  }
+  cube.classList.add( showClass );
+  currentClass = showClass;
+}
+// set initial side
+changeSide();
+
+radioGroup.addEventListener( 'change', changeSide );( function() {
+  var demo = document.querySelector('.demo--rotate-cube');
+  var cube = demo.querySelector('.cube');
+  var currentClass = '';
+
+  function changeSide() {
+    var checkedRadio = demo.querySelector(':checked');
+    var showClass = 'show-' + checkedRadio.value;
+    if ( currentClass ) {
+      cube.classList.remove( currentClass );
+    }
+    cube.classList.add( showClass );
+    currentClass = showClass;
+  }
+  // set initial side
+  changeSide();
+
+  demo.addEventListener( 'change', changeSide );
+})();
+</script>
+
+</html>

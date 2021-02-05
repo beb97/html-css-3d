@@ -1,0 +1,60 @@
+<html>
+<head>
+<link rel="stylesheet" href="card-flip.css"/>
+<title>Cards 3D</title>
+</head>
+<body>
+<a href="cube.html">cube</a>
+<a href="card-flip.html">card</a>
+<a href="carousel.html">carousel</a>
+<!-- ref https://3dtransforms.desandro.com/card-flip -->
+<div class="scene">
+  <div class="cards">
+	<div class="card card-front">front</div>
+	<div class="card card-back ">back</div>
+  </div>
+</div>
+<input type="button" class="button" value="flip me"/>
+
+</body>
+
+<script>
+
+class Cards {
+	constructor() {
+	this.sides = ["front", "back"];
+	this.currentSideIndex = 0;
+	this.cardsHtml = document.querySelector('.cards');
+	this.areFlipped = "are-flipped";
+	}
+	
+	getNextSideIndex() {
+		let nextSideIndex = this.currentSideIndex + 1;
+		if (nextSideIndex >= this.sides.length) {
+			nextSideIndex = 0;
+		}
+		console.log(nextSideIndex);
+		return nextSideIndex;
+	}
+	
+	setNextSide() {
+		if (this.currentSideIndex === 0) {
+			this.cardsHtml.classList.add( this.areFlipped );
+		} else {
+			this.cardsHtml.classList.remove( this.areFlipped );
+		}
+		this.currentSideIndex = this.getNextSideIndex();
+	}
+}
+
+var button = document.querySelector('.button');
+var cards = new Cards();
+
+button.addEventListener( 'click', function() {
+cards.setNextSide()
+}, false );
+
+
+</script>
+
+</html>

@@ -1,0 +1,51 @@
+body {
+	max-width: 500px;
+	margin: auto;
+}
+
+* { box-sizing: border-box; }
+
+.scene {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #CCC;
+  margin: 80px;
+  perspective: 400px;
+}
+
+.cards {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	transition: transform 400ms ease-in-out;
+	transform-style: preserve-3d;
+}
+
+.cards.are-flipped {
+	transform: rotateY(180deg);
+}
+
+.card {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	color: white;
+	font-weight: bold;
+	
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-text {
+}
+
+.card-front {
+	background-color: red;
+	
+}
+
+.card-back {
+	background-color: blue;
+	transform: rotateY( 180deg );
+}
